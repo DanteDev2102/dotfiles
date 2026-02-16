@@ -1,0 +1,19 @@
+{
+  "name": "My-Snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "go",
+        "path": "./go.json"
+      },
+      {
+        "language": "python",
+        "path": "./python.json"
+      },
+      {
+        "language": "xml",
+        "path": "./xml.json"
+      }
+    ]
+  }
+}

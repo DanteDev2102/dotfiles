@@ -1,0 +1,132 @@
+{
+  "If Error Return": {
+    "prefix": "ir",
+    "body": ["if err != nil {", "\treturn ${1:nil, }err", "}"],
+    "description": "Basic Error Check"
+  },
+  "If Error Wrap": {
+    "prefix": "irw",
+    "body": [
+      "if err != nil {",
+      "\treturn ${1:nil, }fmt.Errorf(\"${2:context}: %w\", err)",
+      "}"
+    ],
+    "description": "Error Check with Context Wrapping"
+  },
+  "Struct with JSON tags": {
+    "prefix": "tstruct",
+    "body": [
+      "type ${1:Name} struct {",
+      "\t${2:Field} ${3:Type} `json:\"${4:json_tag}\"`",
+      "\t${0}",
+      "}"
+    ],
+    "description": "Struct definition with JSON tags"
+  },
+  "Echo Handler": {
+    "prefix": "eh",
+    "body": [
+      "func ${1:HandlerName}(c echo.Context) error {",
+      "\tvar req ${2:RequestStruct}",
+      "\tif err := c.Bind(&req); err != nil {",
+      "\t\treturn c.JSON(http.StatusBadRequest, map[string]string{\"error\": \"invalid request\"})",
+      "\t}",
+      "",
+      "\tctx := c.Request().Context()",
+      "\t${0}",
+      "",
+      "\treturn c.JSON(http.StatusOK, ${3:response})",
+      "}"
+    ],
+    "description": "Echo Framework Handler Pattern"
+  },
+  "Go Routine Safe": {
+    "prefix": "gosafe",
+    "body": [
+      "go func() {",
+      "\tdefer func() {",
+      "\t\tif r := recover(); r != nil {",
+      "\t\t\tlog.Printf(\"Recovered in ${1:routine}: %v\", r)",
+      "\t\t}",
+      "\t}()",
+      "\t${0}",
+      "}()"
+    ],
+    "description": "Panic-safe Goroutine"
+  },
+  "Table Driven Test": {
+    "prefix": "tdt",
+    "body": [
+      "func Test${1:Function}(t *testing.T) {",
+      "\ttests := []struct {",
+      "\t\tname    string",
+      "\t\tinput   ${2:Type}",
+      "\t\twant    ${3:Type}",
+      "\t\twantErr bool",
+      "\t}{",
+      "\t\t{",
+      "\t\t\tname:    \"${4:Happy Path}\",",
+      "\t\t\tinput:   ${5:value},",
+      "\t\t\twant:    ${6:expected},",
+      "\t\t\twantErr: false,",
+      "\t\t},",
+      "\t}",
+      "",
+      "\tfor _, tt := range tests {",
+      "\t\tt.Run(tt.name, func(t *testing.T) {",
+      "\t\t\tgot, err := ${1}(tt.input)",
+      "\t\t\tif (err != nil) != tt.wantErr {",
+      "\t\t\t\tt.Errorf(\"${1}() error = %v, wantErr %v\", err, tt.wantErr)",
+      "\t\t\t\treturn",
+      "\t\t\t}",
+      "\t\t\tif !reflect.DeepEqual(got, tt.want) {",
+      "\t\t\t\tt.Errorf(\"${1}() = %v, want %v\", got, tt.want)",
+      "\t\t\t}",
+      "\t\t})",
+      "\t}",
+      "}"
+    ],
+    "description": "Table Driven Test Boilerplate"
+  },
+  "Select Timeout": {
+    "prefix": "seltime",
+    "body": [
+      "select {",
+      "case res := <-${1:ch}:",
+      "\t${2:// handle response}",
+      "case <-time.After(${3:5} * time.Second):",
+      "\treturn ${4:nil, }fmt.Errorf(\"timeout waiting for ${5:operation}\")",
+      "}"
+    ],
+    "description": "Select with Timeout"
+  },
+  "Map String Interface": {
+    "prefix": "msi",
+    "body": "map[string]interface{}{${0}}",
+    "description": "map[string]interface{} shortcut"
+  },
+  "Main Boilerplate": {
+    "prefix": "gmain",
+    "body": [
+      "package main",
+      "",
+      "import (",
+      "\t\"fmt\"",
+      "\t\"os\"",
+      ")",
+      "",
+      "func main() {",
+      "\tif err := run(); err != nil {",
+      "\t\tfmt.Fprintf(os.Stderr, \"error: %v\\n\", err)",
+      "\t\tos.Exit(1)",
+      "\t}",
+      "}",
+      "",
+      "func run() error {",
+      "\t${0}",
+      "\treturn nil",
+      "}"
+    ],
+    "description": "Main with run pattern"
+  }
+}

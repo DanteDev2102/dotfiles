@@ -1,0 +1,146 @@
+{
+  "Odoo Model": {
+    "prefix": "omodel",
+    "body": [
+      "class ${1:NewModel}(models.Model):",
+      "\t_name = '${2:module.name}'",
+      "\t_description = '${3:Description}'",
+      "",
+      "\tname = fields.Char(required=True)",
+      "\t${0}"
+    ],
+    "description": "Define a new Odoo Model"
+  },
+  "Odoo Inherit": {
+    "prefix": "oinherit",
+    "body": [
+      "class ${1:InheritedModel}(models.Model):",
+      "\t_inherit = '${2:target.model}'",
+      "",
+      "\t${0}"
+    ],
+    "description": "Inherit an existing Model"
+  },
+  "Field Char": {
+    "prefix": "oc",
+    "body": "${1:field_name} = fields.Char()",
+    "description": "Char Field"
+  },
+  "Field Integer": {
+    "prefix": "oi",
+    "body": "${1:field_name} = fields.Integer()",
+    "description": "Integer Field"
+  },
+  "Field Float": {
+    "prefix": "of",
+    "body": "${1:field_name} = fields.Float()",
+    "description": "Float Field"
+  },
+  "Field Boolean": {
+    "prefix": "ob",
+    "body": "${1:field_name} = fields.Boolean()",
+    "description": "Boolean Field"
+  },
+  "Field Many2one": {
+    "prefix": "om2o",
+    "body": "${1:field}_id = fields.Many2one('${2:target.model}')",
+    "description": "Many2one Field"
+  },
+  "Field One2many": {
+    "prefix": "oo2m",
+    "body": "${1:field}_ids = fields.One2many('${2:target.model}', '${3:inverse_field_id}')",
+    "description": "One2many Field"
+  },
+  "Field Many2many": {
+    "prefix": "om2m",
+    "body": "${1:field}_ids = fields.Many2many('${2:target.model}', '${3:relation_table}', '${4:column1}', '${5:column2}')",
+    "description": "Many2many Field"
+  },
+  "Field Selection": {
+    "prefix": "osel",
+    "body": [
+      "${1:state} = fields.Selection([",
+      "\t('${2:key}', '${3:Value}'),",
+      "\t('${4:key2}', '${5:Value2}')",
+      "], default='${2:key}')"
+    ],
+    "description": "Selection Field"
+  },
+  "Field Date": {
+    "prefix": "odate",
+    "body": "${1:field_date} = fields.Date()",
+    "description": "Date Field"
+  },
+  "Field Datetime": {
+    "prefix": "odt",
+    "body": "${1:field_datetime} = fields.Datetime()",
+    "description": "Datetime Field"
+  },
+  "Compute Method": {
+    "prefix": "ocompute",
+    "body": [
+      "${1:field_name} = fields.Float(compute='_compute_${1}', store=${2:True})",
+      "",
+      "@api.depends('${3:dependency}')",
+      "def _compute_${1}(self):",
+      "\tfor record in self:",
+      "\t\trecord.${1} = ${0:0.0}"
+    ],
+    "description": "Computed Field with Method"
+  },
+  "Onchange Method": {
+    "prefix": "oonchange",
+    "body": [
+      "@api.onchange('${1:field_name}')",
+      "def _onchange_${1}(self):",
+      "\tif self.${1}:",
+      "\t\t${0:pass}"
+    ],
+    "description": "Onchange Method"
+  },
+  "ORM Create": {
+    "prefix": "ocreate",
+    "body": [
+      "@api.model",
+      "def create(self, vals):",
+      "\tres = super(${1:ClassName}, self).create(vals)",
+      "\t${0}",
+      "\treturn res"
+    ],
+    "description": "Override Create Method"
+  },
+  "ORM Write": {
+    "prefix": "owrite",
+    "body": [
+      "def write(self, vals):",
+      "\tres = super(${1:ClassName}, self).write(vals)",
+      "\t${0}",
+      "\treturn res"
+    ],
+    "description": "Override Write Method"
+  },
+  "Manifest": {
+    "prefix": "omanifest",
+    "body": [
+      "{",
+      "\t'name': '${1:Module Name}',",
+      "\t'summary': '${2:Short Summary}',",
+      "\t'description': \"\"\"",
+      "\t\t${3:Long Description}",
+      "\t\"\"\",",
+      "\t'author': 'Faiser Soft C.A.',",
+      "\t'website': 'https://faisersoft.com',",
+      "\t'category': '${4:Uncategorized}',",
+      "\t'version': '0.1',",
+      "\t'depends': ['base'],",
+      "\t'data': [",
+      "\t\t'security/ir.model.access.csv',",
+      "\t\t'views/views.xml',",
+      "\t],",
+      "\t'installable': True,",
+      "\t'application': False,",
+      "}"
+    ],
+    "description": "Module Manifest"
+  }
+}
