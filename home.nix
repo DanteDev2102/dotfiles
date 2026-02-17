@@ -1,7 +1,17 @@
 { config, pkgs, ... }:
 
-{
+let
+  zjstatus = pkgs.fetchurl {
+    url = "https://github.com/dj95/zjstatus/releases/download/v0.17.0/zjstatus.wasm";
+    sha256 = "sha256-IgTfSl24Eap+0zhfiwTvmdVy/dryPxfEF7LhVNVXe+U=";
+  };
+  zellij_forgot = pkgs.fetchurl {
+    url = "https://github.com/karimould/zellij-forgot/releases/download/0.4.2/zellij_forgot.wasm";
+    sha256 = "sha256-MRlBRVGdvcEoaFtFb5cDdDePoZ/J2nQvvkoyG6zkSds=";
+  };
+in
 
+{
   home.username = "dante";
   home.homeDirectory = "/home/dante";
   home.stateVersion = "25.11";
@@ -41,6 +51,17 @@
     fd
     tree-sitter
   ];
+
+  programs.zellij = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+  xdg.configFile."zellij/config.kdl".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/zellij/config.kdl";
+  xdg.configFile."zellij/layouts".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/zellij/layouts";
+  xdg.configFile."zellij/plugins/zjstatus.wasm".source = zjstatus;
+  xdg.configFile."zellij/plugins/zellij_forgot.wasm".source = zellij_forgot;
 
   programs.git = {
     enable = true;
@@ -90,7 +111,7 @@
     autocd = true;
 
     shellAliases = {
-      nrs = "nh os switch --ask";
+      nrs = "nh os switch --ask /etc/nixos";
       ll = "eza --icons --git";
       ls = "eza --icons --git";
       la = "eza -la --icons --git --group-directories-first";
