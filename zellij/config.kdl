@@ -193,6 +193,14 @@ keybinds clear-defaults=true {
         bind "Alt n" { NewPane; }
         bind "Alt o" { MoveTab "right"; }
     }
+    shared_except "locked" {
+        bind "Ctrl y" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/harpoon.wasm" {
+                floating true;
+                move_to_focused_tab true;
+            }
+        }
+    }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" { SwitchToMode "locked"; }
         bind "Ctrl q" { Quit; }

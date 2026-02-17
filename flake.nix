@@ -19,10 +19,19 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, zen-browser, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      nixos-hardware,
+      zen-browser,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
-      
+
       overlay-unstable = final: prev: {
         unstable = import nixpkgs-unstable {
           inherit system;
@@ -35,16 +44,19 @@
         inherit system;
         specialArgs = { inherit inputs; };
         modules = [
-          ({ config, pkgs, ... }: { 
-            nixpkgs.overlays = [ overlay-unstable ]; 
-          })
+          (
+            { config, pkgs, ... }:
+            {
+              nixpkgs.overlays = [ overlay-unstable ];
+            }
+          )
 
           ./configuration.nix
-          
+
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
-	    home-manager.backupFileExtension = "pending-for-delete";
+            # home-manager.backupFileExtension = "pending-for-delete";
             home-manager.useUserPackages = true;
             home-manager.users.dante = import ./home.nix;
             home-manager.extraSpecialArgs = { inherit inputs; };

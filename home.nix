@@ -9,6 +9,10 @@ let
     url = "https://github.com/karimould/zellij-forgot/releases/download/0.4.2/zellij_forgot.wasm";
     sha256 = "sha256-MRlBRVGdvcEoaFtFb5cDdDePoZ/J2nQvvkoyG6zkSds=";
   };
+  harpoon = pkgs.fetchurl {
+    url = "https://github.com/Nacho114/harpoon/releases/download/v0.2.1/harpoon.wasm";
+    sha256 = "sha256-J9KuuIP+tyjaNvC+B3dJFQhLQ0ye5WAnnvI6xLfuOOg=";
+  };
 in
 
 {
@@ -67,6 +71,7 @@ in
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/zellij/layouts";
   xdg.configFile."zellij/plugins/zjstatus.wasm".source = zjstatus;
   xdg.configFile."zellij/plugins/zellij_forgot.wasm".source = zellij_forgot;
+  xdg.configFile."zellij/plugins/harpoon.wasm".source = harpoon;
 
   programs.git = {
     enable = true;
