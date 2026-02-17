@@ -50,6 +50,11 @@ in
     stylua
     fd
     tree-sitter
+    ffmpegthumbnailer
+    imagemagick
+    fontconfig
+    p7zip
+    poppler
   ];
 
   programs.zellij = {
@@ -169,6 +174,14 @@ in
       };
     };
   };
+
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+    shellWrapperName = "y";
+  };
+  xdg.configFile."yazi".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/yazi";
 
   programs.direnv = {
     enable = true;
