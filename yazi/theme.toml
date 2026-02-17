@@ -1,0 +1,9 @@
+[mgr]
+cwd = { fg = "#7dcfff" } 
+
+hovered         = { bg = "#292e42", bold = true }
+preview_hovered = { underline = true }
+
+executable = { fg = "#9ece6a" } 
+directory  = { fg = "#7aa2f7" }
+link       = { fg = "#bb9af7" } 

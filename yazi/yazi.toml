@@ -1,0 +1,48 @@
+[mgr]
+ratio          = [ 1, 3, 4 ]
+sort_by        = "alphabetical"
+sort_sensitive = false
+sort_reverse   = false
+sort_dir_first = true
+show_hidden    = true
+show_symlink   = true
+
+[preview]
+tab_size        = 2
+max_width       = 600
+max_height      = 900
+cache_dir       = ""
+image_filter    = "triangle"
+image_quality   = 75
+sixel_fraction  = 0.15
+ueberzug_scale  = 1
+ueberzug_offset = [ 0, 0, 0, 0 ]
+
+[opener]
+edit = [
+    { run = 'nvim "$@"', block = true, desc = "Edit" },
+]
+play = [
+	{ run = 'mpv "$@"', orphan = true, desc = "Play" },
+]
+display = [
+	{ run = 'feh "$@"', orphan = true, desc = "Display" },
+]
+
+[open]
+rules = [
+	{ name = "*.tmTheme", use = "edit" },
+	{ name = "*.toml",    use = "edit" },
+	{ name = "*.go",      use = "edit" },
+	{ name = "*.py",      use = "edit" },
+	{ mime = "text/*",    use = "edit" },
+	{ mime = "image/*",   use = "display" },
+	{ mime = "video/*",   use = "play" },
+]
+
+[plugin]
+preload = [
+	{ mime = "image/*", run = "image" },
+	{ mime = "video/*", run = "video" },
+	{ mime = "pdf/*",   run = "pdf" },
+]

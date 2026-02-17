@@ -1,0 +1,28 @@
+[manager]
+keymap = [
+	{ on = [ "<Esc>" ], run = "escape",             desc = "Exit visual mode; clear selection; or cancel search" },
+	{ on = [ "q" ],     run = "quit",               desc = "Exit the process" },
+	{ on = [ "i" ],     run = "insert",             desc = "Enter visual mode" },
+
+	{ on = [ "k" ], run = "arrow -1", desc = "Move cursor up" },
+	{ on = [ "j" ], run = "arrow 1",  desc = "Move cursor down" },
+	{ on = [ "h" ], run = "leave",    desc = "Go back to the parent directory" },
+	{ on = [ "l" ], run = "enter",    desc = "Enter the child directory" },
+
+	{ on = [ "K" ], run = "peek -5", desc = "Peek up 5 lines" },
+	{ on = [ "J" ], run = "peek 5",  desc = "Peek down 5 lines" },
+
+	{ on = [ "y" ], run = "copy",             desc = "Copy the selected files" },
+	{ on = [ "x" ], run = "cut",              desc = "Cut the selected files" },
+	{ on = [ "p" ], run = "paste",            desc = "Paste the files" },
+	{ on = [ "d" ], run = "remove",           desc = "Move the files to the trash" },
+	{ on = [ "r" ], run = "rename",           desc = "Rename a file or directory" },
+	{ on = [ "n" ], run = "create",           desc = "Create a file (append / for dir)" },
+	{ on = [ "." ], run = "hidden toggle",    desc = "Toggle the visibility of hidden files" },
+	{ on = [ "s" ], run = "search fd",        desc = "Search files by name using fd" },
+	{ on = [ "f" ], run = "filter",           desc = "Filter files by name" },
+
+	{ on = [ "t" ], run = "tab_create --current", desc = "Create a new tab" },
+	{ on = [ "L" ], run = "tab_switch 1 --relative", desc = "Next tab" },
+	{ on = [ "H" ], run = "tab_switch -1 --relative", desc = "Previous tab" },
+]
