@@ -1,208 +1,208 @@
-# Documentación de Configuración de Neovim
+# Neovim Configuration Documentation
 
-Este repositorio contiene mi configuración personal de Neovim, optimizada para desarrollo en Go, Rust, Python (Odoo) y NixOS.
+This repository contains my personal Neovim configuration, optimized for development in Go, Rust, Python (Odoo), and NixOS.
 
 ## 🗺️ Keymaps
 
-Aquí se describen los atajos de teclado configurados. La tecla líder (`<leader>`) está configurada como `Espacio`.
+Here are the configured keyboard shortcuts. The leader key (`<leader>`) is configured as `Space`.
 
 ### General
-| Keymap | Modo | Acción |
+| Keymap | Mode | Action |
 | :--- | :--- | :--- |
-| `<C-s>` | Normal, Insert | Guardar archivo (`:w`) |
-| `<Esc>` | Normal | Limpiar resaltado de búsqueda (`:nohlsearch`) |
-| `<leader>wv` | Normal | Dividir ventana verticalmente |
-| `<leader>wh` | Normal | Dividir ventana horizontalmente |
-| `<C-h>`, `<C-j>`, `<C-k>`, `<C-l>` | Normal | Navegar entre ventanas (Izquierda, Abajo, Arriba, Derecha) |
-| `<Tab>` | Normal | Siguiente buffer |
-| `<S-Tab>` | Normal | Anterior buffer |
-| `<leader>bd` | Normal | Cerrar buffer actual |
-| `<leader>as` | Normal | Buscar Símbolos (Aerial) |
+| `Ctrl + s` | Normal, Insert | Save file (`:w`) |
+| `Esc` | Normal | Clear search highlight (`:nohlsearch`) |
+| `space + w + v` | Normal | Split window vertically |
+| `space + w + h` | Normal | Split window horizontally |
+| `Ctrl + h`, `Ctrl + j`, `Ctrl + k`, `Ctrl + l` | Normal | Navigate between windows (Left, Down, Up, Right) |
+| `Tab` | Normal | Next buffer |
+| `Shift + Tab` | Normal | Previous buffer |
+| `space + b + d` | Normal | Close current buffer |
+| `space + a + s` | Normal | Find Symbols (Aerial) |
 
 ### Plugins
-#### Aerial (Símbolos)
-- `<leader>cs`: Alternar panel de símbolos.
+#### Aerial (Symbols)
+- `space + c + s`: Toggle symbols panel.
 
-#### Conform (Formato)
-- `<leader>f`: Formatear archivo.
+#### Conform (Formatting)
+- `space + f`: Format file.
 
-#### Flash (Navegación Rápida)
-- `s`: Saltar a cualquier lugar (Flash jump).
+#### Flash (Fast Navigation)
+- `s`: Jump anywhere (Flash jump).
 - `S`: Flash Treesitter.
-- `<c-s>`: Alternar búsqueda Flash.
+- `Ctrl + s`: Toggle Flash search.
 
-#### Harpoon (Marcas de Archivos)
-- `<leader>a`: Añadir archivo a Harpoon.
-- `<C-e>`: Menú rápido de Harpoon.
-- `<leader>1/2/3`: Ir al archivo 1, 2 o 3.
+#### Harpoon (File Marks)
+- `space + a`: Add file to Harpoon.
+- `Ctrl + e`: Harpoon quick menu.
+- `space + 1` / `space + 2` / `space + 3`: Go to file 1, 2, or 3.
 
 #### LazyGit
-- `<leader>lg`: Abrir LazyGit.
+- `space + l + g`: Open LazyGit.
 
 #### LSP (Language Server Protocol)
-- `gd`: Ir a definición.
-- `gr`: Ver referencias.
-- `K`: Mostrar documentación (Hover).
-- `<leader>rn`: Renombrar símbolo.
-- `<leader>ca`: Acciones de código (Code Action).
-- `<leader>d`: Mostrar diagnóstico en ventana flotante.
-- `[d`, `]d`: Ir al diagnóstico anterior/siguiente.
+- `g + d`: Go to definition.
+- `g + r`: View references.
+- `K`: Show documentation (Hover).
+- `space + r + n`: Rename symbol.
+- `space + c + a`: Code Actions.
+- `space + d`: Show diagnostics in floating window.
+- `[ + d`, `] + d`: Go to previous/next diagnostic.
 
-#### Obsidian (Notas)
-- `<leader>on`: Nueva nota.
-- `<leader>oo`: Buscar en notas.
-- `<leader>ot`: Insertar plantilla.
-- `<leader>ob`: Ver backlinks.
+#### Obsidian (Notes)
+- `space + o + n`: New note.
+- `space + o + o`: Search in notes.
+- `space + o + t`: Insert template.
+- `space + o + b`: View backlinks.
 
-#### Oil (Gestor de Archivos)
-- `-`: Abrir Oil (directorio actual).
+#### Oil (File Manager)
+- `-`: Open Oil (current directory).
 
-#### Persistence (Sesiones)
-- `<leader>qs`: Restaurar sesión.
-- `<leader>ql`: Restaurar última sesión.
-- `<leader>qd`: Detener guardado de sesión.
+#### Persistence (Sessions)
+- `space + q + s`: Restore session.
+- `space + q + l`: Restore last session.
+- `space + q + d`: Stop session saving.
 
-#### Telescope (Buscador)
-- `<leader>ff`: Buscar archivos.
-- `<leader>fg`: Buscar texto (Grep).
-- `<leader>fb`: Buscar buffers.
-- `<leader>fh`: Ayuda de Neovim.
-- `<leader>fo`: Archivos recientes.
-- `<leader>fn`: Notificaciones.
-- `<leader>fc`: Configuración de Neovim.
+#### Telescope (Finder)
+- `space + f + f`: Find files.
+- `space + f + g`: Find text (Grep).
+- `space + f + b`: Find buffers.
+- `space + f + h`: Neovim help.
+- `space + f + o`: Recent files.
+- `space + f + n`: Notifications.
+- `space + f + c`: Neovim configuration.
 
-#### Trouble (Diagnósticos)
-- `<leader>xx`: Alternar diagnósticos del proyecto.
-- `<leader>xb`: Diagnósticos del buffer actual.
-- `<leader>cs`: Símbolos del proyecto.
-- `<leader>cl`: Definiciones/referencias LSP.
+#### Trouble (Diagnostics)
+- `space + x + x`: Toggle project diagnostics.
+- `space + x + b`: Current buffer diagnostics.
+- `space + c + s`: Project symbols.
+- `space + c + l`: LSP definitions/references.
 
 #### Twilight & Zen Mode
-- `<leader>tw`: Alternar Twilight (atenúa código inactivo).
-- `<leader>z`: Modo Zen (sin distracciones).
+- `space + t + w`: Toggle Twilight (dim inactive code).
+- `space + z`: Zen Mode (distraction-free).
 
 #### Undotree
-- `<leader>u`: Árbol de deshacer.
+- `space + u`: Undo tree.
 
 ---
 
-## ⚙️ Opciones de Neovim
+## ⚙️ Neovim Options
 
-Estas son las configuraciones principales establecidas en `lua/config/options.lua`:
+These are the main settings established in `lua/config/options.lua`:
 
-- **Apariencia**:
-  - `termguicolors`: Habilita colores verdaderos (24-bit).
-  - `number` / `relativenumber`: Muestra números de línea relativos.
-  - `signcolumn`: Siempre muestra la columna de signos (para evitar saltos visuales).
-  - `wrap`: Deshabilita el ajuste de línea automático.
-  - `scrolloff`: Mantiene 8 líneas de contexto al hacer scroll vertical.
-  - `laststatus`: 3 (Barra de estado global).
+- **Appearance**:
+  - `termguicolors`: Enables true colors (24-bit).
+  - `number` / `relativenumber`: Shows relative line numbers.
+  - `signcolumn`: Always shows the sign column (to avoid visual jumps).
+  - `wrap`: Disables automatic line wrapping.
+  - `scrolloff`: Keeps 8 lines of context when scrolling vertically.
+  - `laststatus`: 3 (Global status bar).
 
-- **Comportamiento**:
-  - `clipboard`: `unnamedplus` (Usa el portapapeles del sistema).
-  - `mouse`: Habilitado en todos los modos.
-  - `confirm`: Pide confirmación al salir con cambios sin guardar.
-  - `ignorecase` / `smartcase`: Búsqueda insensible a mayúsculas, excepto si se escribe una mayúscula.
-  - `undofile`: Guarda el historial de deshacer en disco (persistente).
-  - `splitbelow` / `splitright`: Las divisiones nuevas aparecen abajo y a la derecha.
+- **Behavior**:
+  - `clipboard`: `unnamedplus` (Uses the system clipboard).
+  - `mouse`: Enabled in all modes.
+  - `confirm`: Asks for confirmation when exiting with unsaved changes.
+  - `ignorecase` / `smartcase`: Case-insensitive search, unless a capital letter is typed.
+  - `undofile`: Saves undo history to disk (persistent).
+  - `splitbelow` / `splitright`: New splits appear below and to the right.
 
-- **Indentación**:
-  - `tabstop` / `shiftwidth`: 4 espacios.
-  - `expandtab`: Usa espacios en lugar de tabs reales.
-  - `smartindent`: Autoindentación inteligente.
+- **Indentation**:
+  - `tabstop` / `shiftwidth`: 4 spaces.
+  - `expandtab`: Uses spaces instead of real tabs.
+  - `smartindent`: Smart auto-indentation.
 
 ---
 
 ## 🧩 Plugins
 
-Lista de plugins instalados y su justificación:
+List of installed plugins and their justification:
 
-| Plugin | Justificación |
+| Plugin | Justification |
 | :--- | :--- |
-| **lazy.nvim** | Gestor de plugins moderno y rápido. |
-| **aerial.nvim** | Navegación por estructura de código (clases, funciones). |
-| **nvim-ts-context-commentstring** | Comentarios inteligentes basados en el contexto (útil para React/JSX). |
-| **conform.nvim** | Formateador de código universal (Go, Python, JS, etc.). |
-| **dashboard-nvim** | Pantalla de inicio personalizada con accesos rápidos. |
-| **direnv.vim** | Integración con `direnv` para entornos por directorio. |
-| **dressing.nvim** | Mejora la interfaz de inputs y selects de Vim. |
-| **dropbar.nvim** | Barra de "migas de pan" (breadcrumbs) en la parte superior. |
-| **flash.nvim** | Navegación ultra rápida por el buffer. |
-| **fzf-lua** | Búsqueda difusa usando FZF (muy rápido). |
-| **gitsigns.nvim** | Muestra cambios de Git en la columna lateral. |
-| **harpoon** | Marcado rápido de archivos para alternar entre ellos. |
-| **incline.nvim** | Líneas de estado flotantes para cada ventana. |
-| **lazygit.nvim** | Integración con la terminal UI de LazyGit. |
-| **lint.nvim** | Linter asíncrono (eslint_d, pylint, etc.). |
-| **nvim-lspconfig** | Configuraciones base para servidores LSP. |
-| **nvim-cmp** | Motor de autocompletado extensible. |
-| **lualine.nvim** | Barra de estado inferior elegante y configurable. |
-| **noice.nvim** | Reemplaza la UI de mensajes, cmdline y notificaciones. |
-| **nvim-notify** | Notificaciones visuales tipo "toast". |
-| **obsidian.nvim** | Gestión de notas y conocimientos (Obsidian). |
-| **oil.nvim** | Gestor de archivos que funciona como un buffer de edición. |
-| **persistence.nvim** | Gestión y restauración de sesiones de trabajo. |
-| **rainbow-delimiters.nvim** | Colorea paréntesis y corchetes por pares. |
-| **render-markdown.nvim** | Visualización mejorada de Markdown en el editor. |
-| **smear-cursor.nvim** | Efecto visual de estela en el cursor. |
-| **telescope.nvim** | Buscador extensible (archivos, texto, buffers, etc.). |
-| **tokyonight.nvim** | Tema de colores principal. |
-| **nvim-treesitter** | Resaltado de sintaxis avanzado y parsing. |
-| **nvim-treesitter-context** | Muestra el contexto de la función actual en la parte superior. |
-| **trouble.nvim** | Lista bonita para diagnósticos, referencias y errores. |
-| **twilight.nvim** | Enfoque en el código actual atenuando el resto. |
-| **undotree** | Visualiza el árbol de cambios y deshacer. |
-| **which-key.nvim** | Muestra ayudas visuales para los atajos de teclado. |
-| **zen-mode.nvim** | Modo de escritura libre de distracciones. |
+| **lazy.nvim** | Modern and fast plugin manager. |
+| **aerial.nvim** | Code structure navigation (classes, functions). |
+| **nvim-ts-context-commentstring** | Smart comments based on context (useful for Svelte/Astro). |
+| **conform.nvim** | Universal code formatter (Go, Python, JS, etc.). |
+| **dashboard-nvim** | Custom startup screen with quick shortcuts. |
+| **direnv.vim** | Integration with `direnv` for per-directory environments. |
+| **dressing.nvim** | Improves Vim's input and select interfaces. |
+| **dropbar.nvim** | "Breadcrumbs" bar at the top. |
+| **flash.nvim** | Ultra-fast buffer navigation. |
+| **fzf-lua** | Fuzzy search using FZF (very fast). |
+| **gitsigns.nvim** | Shows Git changes in the sign column. |
+| **harpoon** | Quick file marking to switch between them. |
+| **incline.nvim** | Floating status lines for each window. |
+| **lazygit.nvim** | Integration with the LazyGit terminal UI. |
+| **lint.nvim** | Asynchronous linter (eslint_d, pylint, etc.). |
+| **nvim-lspconfig** | Base configurations for LSP servers. |
+| **nvim-cmp** | Extensible completion engine. |
+| **lualine.nvim** | Elegant and configurable status line. |
+| **noice.nvim** | Replaces UI for messages, cmdline, and notifications. |
+| **nvim-notify** | "Toast" style visual notifications. |
+| **obsidian.nvim** | Note and knowledge management (Obsidian). |
+| **oil.nvim** | File manager that works like an edit buffer. |
+| **persistence.nvim** | Session management and restoration. |
+| **rainbow-delimiters.nvim** | Colors parentheses and brackets by pairs. |
+| **render-markdown.nvim** | Improved Markdown visualization in the editor. |
+| **smear-cursor.nvim** | Visual trail effect on the cursor. |
+| **telescope.nvim** | Extensible finder (files, text, buffers, etc.). |
+| **tokyonight.nvim** | Main color theme. |
+| **nvim-treesitter** | Advanced syntax highlighting and parsing. |
+| **nvim-treesitter-context** | Shows the current function context at the top. |
+| **trouble.nvim** | Pretty list for diagnostics, references, and errors. |
+| **twilight.nvim** | Focus on current code by dimming the rest. |
+| **undotree** | Visualizes the undo change tree. |
+| **which-key.nvim** | Shows visual help for keybindings. |
+| **zen-mode.nvim** | Distraction-free writing mode. |
 
 ---
 
 ## ✂️ Snippets
 
-Los snippets están gestionados por LuaSnip y se cargan desde archivos JSON en `nvim/snippets/`.
+Snippets are managed by LuaSnip and loaded from JSON files in `nvim/snippets/`.
 
 ### Go (`go.json`)
-| Prefijo | Descripción |
+| Prefix | Description |
 | :--- | :--- |
-| `echo` | Patrón de Handler para Echo Framework |
-| `gosafe` | Goroutine segura con recuperación de pánico |
-| `tdt` | Boilerplate para Table Driven Tests |
-| `seltime` | Select con Timeout |
-| `msi` | Atajo para `map[string]interface{}` |
-| `gmain` | Función main con patrón de ejecución |
+| `echo` | Handler Pattern for Echo Framework |
+| `gosafe` | Panic-safe Goroutine |
+| `tdt` | Boilerplate for Table Driven Tests |
+| `seltime` | Select with Timeout |
+| `msi` | Shortcut for `map[string]interface{}` |
+| `gmain` | Main function with run pattern |
 
 ### Python - Odoo (`python.json`)
-Estos snippets están diseñados para el desarrollo de módulos en Odoo.
+These snippets are designed for Odoo module development.
 
-| Prefijo | Descripción |
+| Prefix | Description |
 | :--- | :--- |
-| `omodel` | Definir un nuevo Modelo de Odoo |
-| `oinherit` | Heredar un modelo existente |
-| `oc` | Campo Char |
-| `oi` | Campo Integer |
-| `of` | Campo Float |
-| `ob` | Campo Boolean |
-| `om2o` | Campo Many2one |
-| `oo2m` | Campo One2many |
-| `om2m` | Campo Many2many |
-| `osel` | Campo Selection |
-| `odate` | Campo Date |
-| `odt` | Campo Datetime |
-| `ocompute` | Campo computado con su método |
-| `oonchange` | Método Onchange |
-| `ocreate` | Sobreescribir método Create |
-| `owrite` | Sobreescribir método Write |
-| `omanifest` | Estructura del archivo Manifest |
+| `omodel` | Define a new Odoo Model |
+| `oinherit` | Inherit an existing Model |
+| `oc` | Char Field |
+| `oi` | Integer Field |
+| `of` | Float Field |
+| `ob` | Boolean Field |
+| `om2o` | Many2one Field |
+| `oo2m` | One2many Field |
+| `om2m` | Many2many Field |
+| `osel` | Selection Field |
+| `odate` | Date Field |
+| `odt` | Datetime Field |
+| `ocompute` | Computed field with its method |
+| `oonchange` | Onchange Method |
+| `ocreate` | Override Create Method |
+| `owrite` | Override Write Method |
+| `omanifest` | Manifest file structure |
 
 ### XML - Odoo (`xml.json`)
-Snippets para vistas y datos de Odoo en XML.
+Snippets for Odoo views and data in XML.
 
-| Prefijo | Descripción |
+| Prefix | Description |
 | :--- | :--- |
-| `orec` | Bloque genérico `<record>` |
-| `oform` | Definición de Vista Form |
-| `olist` | Definición de Vista List (Tree) |
-| `osearch` | Definición de Vista Search con filtros |
-| `oaction` | Acción de Ventana (Window Action) |
-| `omenu` | Elemento de Menú |
-| `oxpath` | Herencia de vistas con XPath |
+| `orec` | Generic `<record>` block |
+| `oform` | Form View Definition |
+| `olist` | List (Tree) View Definition |
+| `osearch` | Search View Definition with filters |
+| `oaction` | Window Action |
+| `omenu` | Menu Item |
+| `oxpath` | View inheritance with XPath |
