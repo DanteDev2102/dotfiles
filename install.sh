@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
@@ -34,7 +34,6 @@ sudo chsh -s $(which zsh) $USER
 
 echo -e "${GREEN}[6/7] Creando directorios de configuración...${NC}"
 
-git clone git@github.com:DanteDev2102/dotfiles.git -b wsl --single-branch
 cp ~/dotfiles/nvim ~/.config
 cp ~/dotfiles/zsh/.zshrc  ~/
 cp ~/dotfiles/zsh/.zsh ~/.zsh
