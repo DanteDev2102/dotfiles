@@ -149,6 +149,7 @@ keybinds clear-defaults=true {
             "change focus of tab"   "ctrl + g + t + arrow key"
             "rename tab"            "ctrl + g + t + r"
             "sync tab"              "ctrl + g + t + s"
+            "Harpoon"               "ctrl + y"
             "brake pane to new tab" "ctrl + g + t + b"
             "brake pane left"       "ctrl + g + t + ["
             "brake pane right"      "ctrl + g + t + ]"
