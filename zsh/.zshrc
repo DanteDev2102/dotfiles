@@ -42,8 +42,21 @@ function mkcd() {
 	mkdir -p "$1" && cd "$1"
 }
 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
 
 export EDITOR='nvim'
 export VISUAL='nvim'
 export TERM="xterm-256color" 
+
+zellij
+

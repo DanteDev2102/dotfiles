@@ -11,11 +11,8 @@ layout {
         pane size=1 borderless=true {
             plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
                 format_left   "{mode} #[fg=#7aa2f7,bold]{session}{tabs}"
-                format_right  "{command_nix_gen} {command_git_branch} {datetime}"
+                format_right  "#[fg=#81A1C1,bold] {command_git_branch} {datetime}"
                 format_space  ""
-                command_nix_gen_command "sh -c \"readlink /nix/var/nix/profiles/system | cut -d- -f2\""
-                command_nix_gen_format "#[fg=#7aa2f7,bold]󱄅 Gen {stdout}"
-                command_nix_gen_interval "300"
                 border_enabled  "false"
                 border_char     "─"
                 border_format   "#[fg=#29a4bd]{char}"
